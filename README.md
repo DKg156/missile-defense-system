@@ -1,6 +1,6 @@
 # missile-defense-system
 
-Group  Members:
+Team  Members:
 1. TV Abhinav Viswanaath  (2023H1120182P)
 2. Dhruv Khurana  (2023H1120185P)
   
