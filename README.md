@@ -20,3 +20,7 @@ Instructions to run the program:
 9. War starts. Program output can be checked from the console as well as logs. A separate folder named logs can be found in our code which has all the output logs generated while running the code.
  (Zero in the print layout means position is empty while a number indicates the soldier_id of a soldier standing in that position.)
 
+Note: 
+i) If you are trying to run commander.py and soldier.py on different machines, you might be required to first unblock the firewalls of target or source systems to allow incoming/outgoing traffic.
+ii) For understandability, we have performed the video recording demo on one machine (localhost), but we have successfully run the files (commander.py and soldier.py) on 2 separate machines while testing.
+
