@@ -1,0 +1,79 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.MissileDefence";
+option java_outer_classname = "MissileDefenceProto";
+option objc_class_prefix = "MDS";
+
+package missiledefense;
+
+service Commander {
+  rpc soldier_ready (ConnectionRequest) returns (NewCommanderFilter) {}
+  rpc missile_approaching (SoldierFilter) returns (stream MissileApproaching) {}
+  rpc status (WasHit) returns (CommanderStatus) {}
+  rpc elect_commander (NewCommanderDetails) returns (Empty) {}
+}
+
+// The request message containing the user's name.
+message SoldierFilter {
+  int32 soldier_id = 1;
+}
+
+message CommanderStatus {
+  int32 new_commander_id = 3;
+}
+
+message NewCommanderFilter {
+  int32 soldier_id = 1;
+}
+
+message ConnectionRequest {
+  int32 soldier_id = 1;
+  repeated int32 position = 2;
+  int32 no_of_soldiers = 3;
+  int32 warzone_size = 4;
+}
+
+message NewCommanderDetails {
+  int32 soldier_id = 1;
+  repeated int32 position = 2;
+  int32 speed = 3;
+}
+
+message Empty {}
+
+// The response message containing the greetings
+message WasHit {
+  int32 soldier_id = 1;
+  bool is_alive = 2;
+  repeated int32 position = 3;
+}
+
+message MissileDetails {
+  repeated int32 position = 1;
+  int32 time = 2;
+  string type = 3;
+}
+
+message LayoutRow {
+  repeated int32 row = 2;
+}
+
+message MissileApproaching {
+  MissileDetails missile = 1;
+  repeated LayoutRow layout = 2;
+}
